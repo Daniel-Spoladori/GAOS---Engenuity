@@ -25,5 +25,5 @@ while true do
     clearTerminal()
     header()
     Terminal()
-    wait(1.900001) -- protects from crashing (equivalent to os.sleep(0))
+    wait(1.400001) -- protects from crashing (equivalent to os.sleep(0))
 end
