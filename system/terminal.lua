@@ -14,7 +14,8 @@ while true do
     end
 
     function Terminal()   
-        keyboard.read()
+        x = input()
+        print("inp = :"..x)
         -- keyboard.read()
         -- keyboard.read()
 
