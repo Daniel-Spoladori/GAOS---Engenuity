@@ -1,24 +1,31 @@
 function terminalInput()
-    lineSaver = OS.currentLine
-    local buffer = ""
+
+    lineSaver = OS.currentLine -- Saves the line
+    local buffer = "" -- Buffer will store everything that is being typed that will store to memory when you added a key before returning
     local done = false
+    
     local functionKeys = {
+
         keyboard.specials,
         keyboard.keypad,
         keyboard.functions
+
     }
+
     local function checkSize()
         if OS.currentLine > resMaxY then
-            invoke(gpu, "copy", 1,1,resMaxX,resMaxY,0,-1)
-            OS.currentLine = resMaxY
-            invoke(gpu, "fill", 1, OS.currentLine,resMaxX, 1, " ")
+
+            invoke(gpu, "copy", 1,1,resMaxX,resMaxY,0,-1) -- Move whole screen by 1 line up
+            OS.currentLine = resMaxY -- Move the current line to the last
+            invoke(gpu, "fill", 1, OS.currentLine,resMaxX, 1, " ") -- Clears for dont mess up with printing
+
         end
     end
+
     local function functionHandler(key)
         if key == keyboard.specials.enter then
             out = buffer
             done = true
-            
         end
         
         if key == keyboard.specials.back then
@@ -26,7 +33,10 @@ function terminalInput()
         end
     
     end
-    
+
+
+
+
     local function details()
         invoke(gpu, "setForeground", terminal.icon.color)
         invoke(gpu, "set", 1, OS.currentLine, terminal.icon.icon)
@@ -50,37 +60,47 @@ function terminalInput()
     end
 
 
+
+
     local function core()
         repeat
+
             checkSize()
             detailsCore()
 
-
             local state, _, ascii, keyPosition = computer.pullSignal() -- Get keyboard input
             if state == "key_down" then
+
                 for functionIndex, tables in pairs(functionKeys) do
-                    for tablesIndex, value in pairs(tables) do -- for each value of function keys do
-                        -- print(value.."   "..keyPosition)
-                        if keyPosition == value then -- check if its a function key
+                    for tablesIndex, value in pairs(tables) do -- For each value of function keys do
+                        if keyPosition == value then -- Check if its a function key
                             functionHandler(keyPosition)
-                            core()
+                            core() -- Return to core if its a function after handling it this will make you not print it and also execute it
                         end
                     end
                 end
+
                 buffer = buffer..string.char(ascii) 
+
             end
         until done
     end
-    core()
-    invoke(gpu, "fill", 1, OS.currentLine ,resMaxX, 1, " ")
 
-    print(detailsPrint() or "")
+    core() -- Executes  core ONCE
 
-    checkSize()
-    computer.beep(1200,0.001)
+    -- If core died or ended then it will do what is bellow
+    invoke(gpu, "fill", 1, OS.currentLine ,resMaxX, 1, " ") -- Clears the Line of when you was writing
+
+    print(detailsPrint() or "") -- Prints the details with color and without the indicator
+
+    checkSize() -- Checks size (I dont remember why i put it here but i remember i need it srry)
+
+    if terminal.beepsAfterInput then
+        computer.beep(1200,0.05)
+    end
+    
     return out
 end
 
 function input()
-
 end
