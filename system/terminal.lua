@@ -15,7 +15,7 @@ while true do
     function Terminal()
         while true do
             local wordInp = basicinput()
-            -- print("inp = :"..wordInp) --debug purpse
+            print("inp = :"..wordInp) --debug purpse
 
         end
     end
