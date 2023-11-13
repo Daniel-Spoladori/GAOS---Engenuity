@@ -44,39 +44,43 @@ keyboard = {
         z               = 0x2C,
     },
     
-    specials =
-    {
-        esc             = 0x01,
+    others = {
         apostrophe      = 0x28,
-        at              = 0x91,
-        back            = 0x0E, -- backspace
         backslash       = 0x2B,
-        capital         = 0x3A, -- capslock
         colon           = 0x92,
         comma           = 0x33,
-        enter           = 0x1C,
         equals          = 0x0D,
         grave           = 0x29, -- accent grave
         lbracket        = 0x1A,
+        minus           = 0x0C,
+        period          = 0x34,
+        rbracket        = 0x1B,
+        slash           = 0x35, -- / on main keyboard
+        space           = 0x39,
+        underline       = 0x93,
+        semicolon       = 0x27,
+
+    },
+
+    specials =
+    {
+        esc             = 0x01,
+        at              = 0x91,
+        back            = 0x0E, -- backspace
+        capital         = 0x3A, -- capslock
+        enter           = 0x1C,
         lcontrol        = 0x1D,
         lmenu           = 0x38, -- left Alt
         lshift          = 0x2A,
-        minus           = 0x0C,
         numlock         = 0x45,
         pause           = 0xC5,
-        period          = 0x34,
 
-        rbracket        = 0x1B,
         rcontrol        = 0x9D,
         rmenu           = 0xB8,-- right Alt
         rshift          = 0x36,
         scroll          = 0x46, -- Scroll Lock
-        semicolon       = 0x27,
-        slash           = 0x35, -- / on main keyboard
-        space           = 0x39,
         stop            = 0x95,
         tab             = 0x0F,
-        underline       = 0x93,
     },
 
     keypad =

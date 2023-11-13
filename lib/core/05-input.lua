@@ -1,4 +1,4 @@
-function basicinput()
+function terminalInput()
     lineSaver = OS.currentLine
     local buffer = ""
     local done = false
@@ -19,10 +19,6 @@ function basicinput()
             out = buffer
             done = true
             
-        end
-    
-        if key == keyboard.specials.space then
-            buffer = buffer.." "
         end
         
         if key == keyboard.specials.back then
@@ -57,11 +53,6 @@ function basicinput()
     local function core()
         repeat
             checkSize()
-            -- OS.currentLine = lineSaver
-            -- invoke(gpu, "set", 1,OS.currentLine, ">"..buffer.."⬜")
-                        -- OS.currentLine = lineSaver
-            -- print(OS.currentLine,">"..buffer.."⬜")
-
             detailsCore()
 
 
@@ -88,4 +79,8 @@ function basicinput()
     checkSize()
     computer.beep(1200,0.001)
     return out
+end
+
+function input()
+
 end

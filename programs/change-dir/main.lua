@@ -1,0 +1,1 @@
+print("Write the directory bellow:")

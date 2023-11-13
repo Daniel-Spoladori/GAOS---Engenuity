@@ -14,7 +14,7 @@ while true do
 
     function Terminal()
         while true do
-            local wordInp = basicinput()
+            local wordInp = terminalInput()
             -- print("inp = :"..wordInp) --debug purpse
             for _, folder in pairs(invoke(address, "list", "/programs")) do
                 for _,file in pairs(invoke(address, "list", tostring("/programs/"..folder))) do
