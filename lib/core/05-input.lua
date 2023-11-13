@@ -30,15 +30,41 @@ function basicinput()
         end
     
     end
+    
+    local function details()
+        invoke(gpu, "setForeground", terminal.icon.color)
+        invoke(gpu, "set", 1, OS.currentLine, terminal.icon.icon)
+        invoke(gpu, "setForeground", terminal.path.color)
+        invoke(gpu, "set", #terminal.icon.icon + 1, OS.currentLine, terminal.path.path)
+        invoke(gpu, "setForeground", terminal.message.color)
+    end
+
+    local function detailsCore()
+        details()
+        invoke(gpu, "set", #terminal.icon.icon + #terminal.path.path + 1, OS.currentLine, buffer)
+        invoke(gpu, "setForeground", terminal.cursor.color)
+        invoke(gpu, "set", #terminal.icon.icon + #terminal.path.path + #buffer + 1, OS.currentLine, terminal.cursor.icon)
+        invoke(gpu, "setForeground", terminal.message.color)
+    end
+
+    local function detailsPrint()
+        details()
+        invoke(gpu, "set", #terminal.icon.icon + #terminal.path.path + 1, OS.currentLine, out)
+        invoke(gpu, "setForeground", terminal.message.color)
+    end
 
 
     local function core()
         repeat
             checkSize()
             -- OS.currentLine = lineSaver
-            invoke(gpu, "set", 1,OS.currentLine, ">"..buffer.."⬜")
-            -- OS.currentLine = lineSaver
+            -- invoke(gpu, "set", 1,OS.currentLine, ">"..buffer.."⬜")
+                        -- OS.currentLine = lineSaver
             -- print(OS.currentLine,">"..buffer.."⬜")
+
+            detailsCore()
+
+
             local state, _, ascii, keyPosition = computer.pullSignal() -- Get keyboard input
             if state == "key_down" then
                 for functionIndex, tables in pairs(functionKeys) do
@@ -56,7 +82,9 @@ function basicinput()
     end
     core()
     invoke(gpu, "fill", 1, OS.currentLine ,resMaxX, 1, " ")
-    print(">"..out)
+
+    print(detailsPrint() or "")
+
     checkSize()
     computer.beep(1200,0.001)
     return out
