@@ -96,9 +96,9 @@ function terminalInput()
     checkSize() -- Checks size (I dont remember why i put it here but i remember i need it srry)
 
     if terminal.beepsAfterInput then
-        computer.beep(1200,0.05)
+        computer.beep(1200,0.05) -- If dont want i BEEPING go to /config/details.cfg and change beepsAfterInput to false
     end
-    
+
     return out
 end
 
