@@ -58,5 +58,6 @@ function basicinput()
     invoke(gpu, "fill", 1, OS.currentLine ,resMaxX, 1, " ")
     print(">"..out)
     checkSize()
+    computer.beep(1200,0.001)
     return out
 end
