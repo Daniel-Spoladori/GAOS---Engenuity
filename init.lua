@@ -32,5 +32,5 @@ end
 load(loadlib) -- will load the loadlib funcion that way we can use it anywhere
 loadlib("/system/intro.lua")
 loadlib("/system/libldr.lua")
-loadlib("/system/terminal.lua")
+runfile("/system/terminal.lua")
 error("Terminal died: unrecoverable error") -- if the terminal "dies" or stop working it will crash the OS
