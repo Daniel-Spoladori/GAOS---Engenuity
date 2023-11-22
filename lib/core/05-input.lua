@@ -70,7 +70,7 @@ function terminalInput()
 
             local state, _, ascii, keyPosition = computer.pullSignal() -- Get keyboard input
             if state == "key_down" then
-
+                    
                 for functionIndex, tables in pairs(functionKeys) do
                     for tablesIndex, value in pairs(tables) do -- For each value of function keys do
                         if keyPosition == value then -- Check if its a function key
@@ -86,7 +86,7 @@ function terminalInput()
         until done
     end
 
-    core() -- Executes  core ONCE
+    core() -- Executes core ONCE
 
     -- If core died or ended then it will do what is bellow
     invoke(gpu, "fill", 1, OS.currentLine ,resMaxX, 1, " ") -- Clears the Line of when you was writing
