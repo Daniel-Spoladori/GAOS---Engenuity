@@ -1,3 +1,5 @@
+-- this will take care of terminal process
+
 loadlib("/config/phrases.cfg")
 clearTerminal()
 -- for _,v in pairs()

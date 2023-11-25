@@ -1,3 +1,5 @@
+-- this file is a intro for the OS you are allowed to change how you want and even disable it BUT if you keep it on for public use PLZ give credits but its optional however i would like
+
 local invoke, shell = component.invoke, component.shell
 local gpu, screen = component.list("gpu")(), component.list("screen")()
 

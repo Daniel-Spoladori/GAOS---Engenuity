@@ -1,4 +1,4 @@
--- this script is made inspiring on default openOS
+-- This is init where everything begins and this is called after bios so is kinda low level opencomputers lua
 
 local address, invoke = computer.getBootAddress(), component.invoke
 
