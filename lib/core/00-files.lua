@@ -1,3 +1,5 @@
+-- This lib take care of filesystem api and any alteration of how the filesystem works must be done here
+
 local address, invoke = computer.getBootAddress(), component.invoke
 function runfile(path)
     local handle = assert(invoke(address, "open", path)) -- Handle will take care of erros and it will hold the open directory
@@ -12,16 +14,21 @@ function runfile(path)
     if reason then error(reason) else return loaded() end
 end
 
-function require(file)
-    local found = false
-    for i,v in pairs(OS.requirePaths) do
-        if invoke(address, "exists", v .. file) then
-            found = true
-            runfile(v .. file)
-            break
-        else
+
+
+--require function is not used in this OS so keep in mind that this function is not properlly debugged and is not widely userful on that OS
+--enable if you want it \/
+
+-- function require(file)
+--     local found = false
+--     for i,v in pairs(OS.requirePaths) do
+--         if invoke(address, "exists", v .. file) then
+--             found = true
+--             runfile(v .. file)
+--             break
+--         else
             
-        end
-    end
-    if not found then error ("404: File not found") end
-end
+--         end
+--     end
+--     if not found then error ("404: File not found") end
+-- end

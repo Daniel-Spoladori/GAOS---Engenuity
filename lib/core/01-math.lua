@@ -1,3 +1,5 @@
+-- This lib is for a shortcut for some programs and is not a very important lib but makes coding easier to read
+
 function increment(var, amount)
     if amount == nil then 
         return var + 1

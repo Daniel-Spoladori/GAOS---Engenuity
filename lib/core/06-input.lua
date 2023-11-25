@@ -1,3 +1,5 @@
+-- this lib takes care of user input and interaction with OS
+
 function terminalInput(showPath)
     if showPath == nil or false then
         showPath = false

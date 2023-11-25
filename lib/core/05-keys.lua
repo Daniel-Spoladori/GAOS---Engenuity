@@ -1,3 +1,5 @@
+-- This lib takes care of whare wich key are placed and what they do separated in tables
+
 keyboard = {
 
     numbers =
