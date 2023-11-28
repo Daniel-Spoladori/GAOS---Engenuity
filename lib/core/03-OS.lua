@@ -7,6 +7,6 @@ function wait(seconds)
     end
 end
 
--- function milis(miliseconds)
-
--- end
+function milis()
+    return computer.uptime() -- Returns uptime of computer
+end
