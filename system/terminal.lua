@@ -35,7 +35,7 @@ while true do
 
     clearTerminal()
     header()
-    OS.currentLine = 5 -- with a hard coded mothod and unneficient this will jump to the next line wheare terminal starts and will be line bellow the header
+    OS.currentLine = OS.terminalStart
     Terminal()
     wait(0.00001) -- protects from crashing (equivalent to os.sleep(0))
 end
