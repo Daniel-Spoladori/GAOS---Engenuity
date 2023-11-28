@@ -1,10 +1,10 @@
 -- this lib takes care of user input and interaction with OS
 
-function terminalInput(showPath)
-    if showPath == nil or false then
-        showPath = false
-    elseif showPath == true then
-        showPath = true
+function terminalInput(hidePath)
+    if hidePath == nil or false then
+        hidePath = false
+    elseif hidePath == true then
+        hidePath = true
     else 
         local info = debug.getinfo(3,S1)
         error(tostring(info.short_src..":"..info.linedefined..":".." ".."Error, Try check parameters"),0) -- the 0 is for dont get wheare is THIS exactly file and this line
@@ -52,7 +52,7 @@ function terminalInput(showPath)
     local function details()
         invoke(gpu, "setForeground", terminal.icon.color)
         invoke(gpu, "set", 1, OS.currentLine, terminal.icon.icon)
-        if showPath == false then
+        if hidePath == false then
             invoke(gpu, "setForeground", terminal.path.color)
             invoke(gpu, "set", #terminal.icon.icon + 1, OS.currentLine, terminal.path.path)
             invoke(gpu, "setForeground", terminal.message.color)
@@ -63,7 +63,7 @@ function terminalInput(showPath)
 
     local function detailsCore()
         details()
-        if showPath == false then
+        if hidePath == false then
             invoke(gpu, "set", #terminal.icon.icon + #terminal.path.path + 1, OS.currentLine, buffer)
             invoke(gpu, "setForeground", terminal.cursor.color)
             invoke(gpu, "set", #terminal.icon.icon + #terminal.path.path + #buffer + 1, OS.currentLine, terminal.cursor.icon)
@@ -79,7 +79,7 @@ function terminalInput(showPath)
     
     local function detailsPrint()
         details()
-        if showPath == false then
+        if hidePath == false then
             invoke(gpu, "set", #terminal.icon.icon + #terminal.path.path + 1, OS.currentLine, out)
             invoke(gpu, "setForeground", terminal.message.color)
         else
