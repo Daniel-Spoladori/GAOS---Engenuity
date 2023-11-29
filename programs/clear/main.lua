@@ -1,4 +1,4 @@
 clearTerminal()
 header()
-os.currentLine = OS.terminalStart
+OS.currentLine = OS.terminalStart
 Terminal()
