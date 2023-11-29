@@ -14,6 +14,13 @@ function runfile(path)
     if reason then error(reason) else return loaded() end
 end
 
+function TermSegment(path)
+    local segments = {}
+    for _, value in (string.gmatch("/lib/core", "(%w-)/(%w+)")) do
+        table.insert(segments,value)
+    end
+    return segments
+end
 
 
 --require function is not used in this OS so keep in mind that this function is not properlly debugged and is not widely userful on that OS
