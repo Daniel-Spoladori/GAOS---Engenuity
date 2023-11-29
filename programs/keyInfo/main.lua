@@ -13,3 +13,8 @@ OS.currentLine = 1
         break
     end
 end
+    
+clearTerminal()
+header()
+OS.currentLine = OS.terminalStart
+Terminal()
