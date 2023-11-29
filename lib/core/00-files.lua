@@ -16,7 +16,7 @@ end
 
 function TermSegment(path)
     local segments = {}
-    for _, value in (string.gmatch("/lib/core", "(%w-)/(%w+)")) do
+    for _, value in (string.gmatch(path, "(%w-)/(%w+)")) do
         table.insert(segments,value)
     end
     return segments
