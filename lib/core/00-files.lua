@@ -16,7 +16,7 @@ end
 
 function TermSegment(path)
     local segments = {}
-    for _, value in (string.gmatch(path, "(%w-)/(%w+)")) do
+    for value in (string.gmatch(path, "[^/]+")) do -- the [] will act like as parentesis (will run before) and ^ will invert so anything else then / and then the + will kinda "concat" everyhing 
         table.insert(segments,value)
     end
     return segments
