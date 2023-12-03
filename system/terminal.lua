@@ -11,7 +11,10 @@ while true do
         invoke(gpu, "set", 1 ,1, "GAOS - ENGENUITY ".."Version: V".. OS.version) -- title
         invoke(gpu, "set", 1, 2, tostring(motivationalPhrases[math.random(1, #motivationalPhrases)])) -- its working! dont toutch! RULE nº? OF PROGRAMMING
         invoke(gpu, "fill", 1, 3, resMaxX, 1, "-") -- divisory
+        local oldforeground = invoke(gpu, "getForeground")
+        invoke(gpu, "setForeground", helpColor)
         invoke(gpu, "set", 1 ,4, "Type 'help' for help.")
+        invoke(gpu, "setForeground", oldforeground)
     end
 
     function Terminal()
